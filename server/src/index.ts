@@ -10,6 +10,7 @@ import productRoutes from './routes/productRoutes';
 import notificationRoutes from './routes/notificationRoutes';
 import userRoutes from './routes/userRoutes';
 import dashboardRoutes from './routes/dashboardRoutes';
+import movementRoutes from './routes/movementRoutes';
 
 // Configuración de variables de entorno
 dotenv.config();
@@ -35,6 +36,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/movements', movementRoutes);
 
 /* Ruta de prueba
 app.get('/', (req: Request, res: Response) => {
