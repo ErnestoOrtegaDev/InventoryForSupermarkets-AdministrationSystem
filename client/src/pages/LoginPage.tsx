@@ -29,10 +29,6 @@ export const LoginPage = () => {
                 password 
             });
 
-            console.log("RESPUESTA DEL BACKEND:", data);
-            console.log("USUARIO RECIBIDO:", data.user);
-            console.log("ROL DEL USUARIO:", data.user.role);
-
             // Guardar usuario en el Store
             login(data.user);
 
