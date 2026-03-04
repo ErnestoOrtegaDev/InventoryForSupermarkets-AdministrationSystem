@@ -70,3 +70,30 @@ Este repositorio contiene tanto el código del cliente como el del servidor, sep
 │   └── README.md           # Documentación específica del frontend
 │
 └── README.md               # Documentación global (Este archivo)
+```
+
+## ⚙️ Instalación del Proyecto
+
+Para correr este proyecto en entorno de desarrollo, necesitarás ejecutar ambos entornos por separado. Por favor, consulta la documentación específica de cada módulo para ver las variables de entorno necesarias:
+
+### Levantar el Backend
+
+```text
+cd server
+npm install
+npm run dev
+
+```
+### Levantar Front
+
+```text
+cd client
+npm install
+npm run dev
+```
+
+### 👨‍💻 Autor y Contexto Académico
+
+Ernesto Estudiante de Ingeniería en Tecnologías de la Información e Innovación Digital Universidad Politécnica de Durango (UNIPOLI DGO)
+
+Desarrollado como solución tecnológica para la gestión profesional de inventarios y trazabilidad de mercancía.
