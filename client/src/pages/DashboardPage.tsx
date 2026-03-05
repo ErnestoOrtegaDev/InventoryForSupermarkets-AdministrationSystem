@@ -86,18 +86,22 @@ const Dashboard = () => {
                 <>
                     {/* --- SECCIÓN 1: Tarjetas KPI --- */}
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                        <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-blue-500">
+                        {/* Cambiado de blue-500 a rose-800 (Guinda) */}
+                        <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-rose-800">
                             <h3 className="text-sm text-gray-500 font-medium">Productos Totales</h3>
                             <p className="text-3xl font-bold text-gray-800">{dashboardStats.kpis.totalProducts}</p>
                         </div>
+                        {/* Mantenemos verde por ser dinero/valor */}
                         <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-green-500">
                             <h3 className="text-sm text-gray-500 font-medium">Valor Total</h3>
                             <p className="text-3xl font-bold text-gray-800">${dashboardStats.kpis.totalValue.toLocaleString()}</p>
                         </div>
-                        <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-purple-500">
+                        {/* Cambiado de purple-500 a rose-600 para mantener la armonía de la paleta cálida */}
+                        <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-rose-600">
                             <h3 className="text-sm text-gray-500 font-medium">Categorías</h3>
                             <p className="text-3xl font-bold text-gray-800">{dashboardStats.kpis.totalCategories}</p>
                         </div>
+                        {/* Mantenemos rojo por ser alerta de stock crítico */}
                         <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-red-500">
                             <h3 className="text-sm text-gray-500 font-medium">Stock Crítico</h3>
                             <p className="text-3xl font-bold text-red-600">{dashboardStats.kpis.lowStockAlerts}</p>
