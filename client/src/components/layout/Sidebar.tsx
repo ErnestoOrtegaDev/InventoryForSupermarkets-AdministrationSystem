@@ -11,7 +11,7 @@ interface SidebarProps {
     setIsOpen: (isOpen: boolean) => void;
 }
 
-// AQUÍ ESTÁ EL CAMBIO: Recibimos isOpen y setIsOpen, y le decimos que use la interfaz SidebarProps
+// Recibimos isOpen y setIsOpen, y le decimos que use la interfaz SidebarProps
 export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
     const { user, logout } = useAuthStore();
 
@@ -53,7 +53,7 @@ export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 
     return (
         <>
-            {/* 2. OVERLAY (Fondo oscuro en móvil al abrir el menú) */}
+            {/* OVERLAY (Fondo oscuro en móvil al abrir el menú) */}
             {isOpen && (
                 <div 
                     className="fixed inset-0 bg-black/50 z-40 lg:hidden backdrop-blur-sm transition-opacity"
@@ -61,7 +61,7 @@ export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                 />
             )}
 
-            {/* 3. SIDEBAR */}
+            {/* SIDEBAR */}
             <aside className={clsx(
                 "w-64 bg-slate-900 text-white flex flex-col h-screen fixed left-0 top-0 border-r border-slate-800 z-50 transition-transform duration-300 ease-in-out",
                 // Magia responsiva: En PC (lg) siempre está en 0. En móvil, se esconde o muestra según 'isOpen'
@@ -71,7 +71,8 @@ export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                 {/* Encabezado del Sidebar */}
                 <div className="h-16 flex items-center justify-between px-6 border-b border-slate-800">
                     <div className="flex items-center">
-                        <Store className="text-blue-500 mr-2" size={24} />
+                        {/* Cambiado de blue-500 a rose-500 para el icono del logo */}
+                        <Store className="text-rose-500 mr-2" size={24} />
                         <span className="font-bold text-lg tracking-wide">StockMaster</span>
                     </div>
                     {/* Botón de cerrar (Solo visible en móviles) */}
@@ -92,8 +93,9 @@ export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                             onClick={() => setIsOpen(false)} // Cierra el menú al hacer clic en un link (UX Móvil)
                             className={({ isActive }) => clsx(
                                 'flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-sm font-medium',
+                                // Cambiado de bg-blue-600 a bg-rose-800 (Guinda) para la pestaña activa
                                 isActive 
-                                    ? 'bg-blue-600 text-white shadow-md' 
+                                    ? 'bg-rose-800 text-white shadow-md' 
                                     : 'text-slate-400 hover:bg-slate-800 hover:text-white'
                             )}
                         >

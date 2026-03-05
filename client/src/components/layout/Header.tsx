@@ -23,8 +23,8 @@ export const Header = () => {
                         </p>
                         <p className="text-xs text-gray-500 capitalize">{user?.role}</p>
                     </div>
-                    {/* Avatar con iniciales */}
-                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold border-2 border-white shadow-sm">
+                    {/* Avatar con iniciales (Actualizado a tonos guinda/vino) */}
+                    <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-800 font-bold border-2 border-white shadow-sm">
                         {user?.firstName?.charAt(0)}
                     </div>
                 </div>
