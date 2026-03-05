@@ -74,13 +74,14 @@ export const InventoryPage = () => {
     );
 
     return (
-        <div className="space-y-6">
+    <div className="space-y-6">
             {/* --- ENCABEZADO Y SELECTOR --- */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 bg-white p-5 rounded-xl shadow-sm border border-gray-100">
                 <div className="w-full md:w-auto space-y-4">
                     <div>
                         <h1 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-                            <Package className="text-blue-600" /> 
+                            {/* Cambiado a rose-600 */}
+                            <Package className="text-rose-600" /> 
                             Inventario
                         </h1>
                         <p className="text-gray-500">Gestiona los productos y el stock.</p>
@@ -93,7 +94,7 @@ export const InventoryPage = () => {
                             <div className="relative w-full sm:w-64">
                                 <Store className="absolute left-3 top-2.5 text-gray-400" size={16} />
                                 <select 
-                                    className="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none appearance-none bg-gray-50"
+                                    className="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-rose-600 outline-none appearance-none bg-gray-50"
                                     value={selectedSupermarketId}
                                     onChange={(e) => setSelectedSupermarketId(e.target.value)}
                                 >
@@ -114,7 +115,7 @@ export const InventoryPage = () => {
                         <input 
                             type="text" 
                             placeholder="Buscar por nombre o SKU..." 
-                            className="w-full sm:w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                            className="w-full sm:w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-rose-600 outline-none"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
@@ -124,8 +125,8 @@ export const InventoryPage = () => {
                     {user?.role !== 'provider' && (
                         <button 
                             onClick={handleOpenCreate} 
-                            disabled={!selectedSupermarketId} // Deshabilitado si no hay sucursal seleccionada
-                            className="flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all shadow-md active:scale-95 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                            disabled={!selectedSupermarketId}
+                            className="flex items-center justify-center gap-2 bg-rose-700 text-white px-4 py-2 rounded-lg hover:bg-rose-800 transition-all shadow-md active:scale-95 disabled:bg-gray-400 disabled:cursor-not-allowed"
                         >
                             <Plus size={18} />
                             Nuevo Producto
@@ -160,7 +161,8 @@ export const InventoryPage = () => {
                             ) : isLoadingProducts ? (
                                 <tr>
                                     <td colSpan={6} className="py-16 text-center">
-                                        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+                                        {/* Spinner cambiado a rose-600 */}
+                                        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-rose-600 mx-auto"></div>
                                     </td>
                                 </tr>
                             ) : filteredProducts.length === 0 ? (
@@ -203,7 +205,7 @@ export const InventoryPage = () => {
                                                     <div className="flex items-center justify-center gap-2">
                                                         <button 
                                                             onClick={() => handleOpenEdit(product)}
-                                                            className="p-1.5 text-blue-500 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+                                                            className="p-1.5 text-rose-600 hover:text-rose-800 hover:bg-rose-50 rounded-lg transition-colors"
                                                             title="Editar"
                                                         >
                                                             <Edit size={18} />

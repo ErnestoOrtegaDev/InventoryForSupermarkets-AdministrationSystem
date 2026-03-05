@@ -79,13 +79,13 @@ export const ProductModal = ({ isOpen, onClose, productToEdit, supermarketId }: 
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden my-auto animate-in fade-in zoom-in duration-200">
                 
                 {/* Encabezado */}
                 <div className="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center sticky top-0 z-10">
                     <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                        <Package className="text-blue-600" size={24} />
+                        <Package className="text-rose-600" size={24} />
                         {productToEdit ? 'Editar Producto' : 'Nuevo Producto'}
                     </h2>
                     <button onClick={onClose} className="text-gray-400 hover:text-gray-600 hover:bg-gray-200 p-1 rounded-full transition-colors">
@@ -103,7 +103,7 @@ export const ProductModal = ({ isOpen, onClose, productToEdit, supermarketId }: 
                             <input 
                                 type="text" required
                                 placeholder="Ej. Coca-Cola 600ml"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-600 outline-none"
                                 value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})}
                             />
                         </div>
@@ -114,7 +114,7 @@ export const ProductModal = ({ isOpen, onClose, productToEdit, supermarketId }: 
                                 <input 
                                     type="text" required
                                     placeholder="Ej. 75010553"
-                                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none uppercase"
+                                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-600 outline-none uppercase"
                                     value={formData.sku} onChange={e => setFormData({...formData, sku: e.target.value})}
                                 />
                             </div>
@@ -128,7 +128,7 @@ export const ProductModal = ({ isOpen, onClose, productToEdit, supermarketId }: 
                             <div className="relative">
                                 <Layers className="absolute left-3 top-2.5 text-gray-400" size={18} />
                                 <select 
-                                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none appearance-none bg-white"
+                                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-600 outline-none appearance-none bg-white"
                                     value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})}
                                 >
                                     <option value="General">General</option>
@@ -147,7 +147,7 @@ export const ProductModal = ({ isOpen, onClose, productToEdit, supermarketId }: 
                                 <input 
                                     type="number" required min="0" step="0.01"
                                     placeholder="0.00"
-                                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-600 outline-none"
                                     value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})}
                                 />
                             </div>
@@ -158,11 +158,12 @@ export const ProductModal = ({ isOpen, onClose, productToEdit, supermarketId }: 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1">
-                                <BarChart2 size={16} className="text-blue-500" /> Stock Actual
+                                {/* Icono cambiado a rose-600 */}
+                                <BarChart2 size={16} className="text-rose-600" /> Stock Actual
                             </label>
                             <input 
                                 type="number" required min="0"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-600 outline-none"
                                 value={formData.stock} onChange={e => setFormData({...formData, stock: e.target.value})}
                             />
                         </div>
@@ -185,7 +186,7 @@ export const ProductModal = ({ isOpen, onClose, productToEdit, supermarketId }: 
                                 type="checkbox" id="activeProduct"
                                 checked={formData.active}
                                 onChange={(e) => setFormData({...formData, active: e.target.checked})}
-                                className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                                className="w-4 h-4 text-rose-600 rounded border-gray-300 focus:ring-rose-600"
                             />
                             <label htmlFor="activeProduct" className="text-sm text-gray-700 font-medium">
                                 Producto Activo (Visible en sistema)
@@ -198,7 +199,7 @@ export const ProductModal = ({ isOpen, onClose, productToEdit, supermarketId }: 
                         <button type="button" onClick={onClose} className="flex-1 px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium transition-colors">
                             Cancelar
                         </button>
-                        <button type="submit" disabled={isLoading} className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow-md transition-all flex items-center justify-center gap-2">
+                        <button type="submit" disabled={isLoading} className="flex-1 px-4 py-2 bg-rose-700 hover:bg-rose-800 text-white rounded-lg font-medium shadow-md transition-all flex items-center justify-center gap-2">
                             {isLoading ? 'Guardando...' : <><Save size={18} /> Guardar</>}
                         </button>
                     </div>
