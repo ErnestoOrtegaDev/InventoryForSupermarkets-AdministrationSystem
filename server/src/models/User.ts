@@ -60,8 +60,15 @@ const UserSchema: Schema = new Schema({
     },
     googleId: { type: String },
     deleteDate: { type: Date, default: null },
-    resetPasswordToken: String,
-    resetPasswordExpire: Date
+    
+    resetPasswordToken: {
+    type: String,
+    required: false,
+},
+    resetPasswordExpire: {
+    type: Date,
+    required: false,
+},
 }, {
     timestamps: true, 
     versionKey: false
