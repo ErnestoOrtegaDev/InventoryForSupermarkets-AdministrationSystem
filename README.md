@@ -1,14 +1,14 @@
 # 📦 StockMaster
 
-![Status](https://img.shields.io/badge/Status-In_Development-green)
-![React](https://img.shields.io/badge/React-18-blue?logo=react)
+![Status](https://img.shields.io/badge/Status-In_Development-green?style=for-the-badge)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff)
-![Axios](https://img.shields.io/badge/Axios-5A29E4?logo=axios&logoColor=fff)
-![Zustand](https://img.shields.io/badge/Zustand-443E38?logoColor=fff)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+![Zustand](https://img.shields.io/badge/Zustand-443E38?style=for-the-badge&logoColor=white)
 
 **StockMaster** is a professional multi-branch inventory management system designed to optimize product control, audit movements, and prevent stockouts through real-time alerts.
 
