@@ -1,15 +1,15 @@
 import { Request, Response } from 'express';
 import Notification from '../models/Notification';
 
-// @desc    Obtener notificaciones de un supermercado
+// @desc    Get notifications for a supermarket
 // @route   GET /api/notifications/:supermarketId
 export const getNotifications = async (req: Request, res: Response) => {
     try {
         const { supermarketId } = req.params;
-        // Traemos las no leídas primero
+        // Obtain notifications for the supermarket, sorted by newest first
         const notifications = await Notification.find({ supermarket: supermarketId })
-            .sort({ createdAt: -1 }) // Las más nuevas arriba
-            .populate('product', 'name sku'); // Traer info básica del producto
+            .sort({ createdAt: -1 }) // The most recent notifications will appear first
+            .populate('product', 'name sku'); // Come back with basic product info
 
         res.json(notifications);
     } catch (error) {
@@ -17,7 +17,7 @@ export const getNotifications = async (req: Request, res: Response) => {
     }
 };
 
-// @desc    Marcar notificación como leída
+// @desc    Check if there are unread notifications for a supermarket
 // @route   PUT /api/notifications/:id/read
 export const markAsRead = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -35,7 +35,7 @@ export const markAsRead = async (req: Request, res: Response): Promise<void> => 
     }
 };
 
-// @desc    Eliminar notificación
+// @desc    Notification Delete
 // @route   DELETE /api/notifications/:id
 export const deleteNotification = async (req: Request, res: Response): Promise<void> => {
     try {
