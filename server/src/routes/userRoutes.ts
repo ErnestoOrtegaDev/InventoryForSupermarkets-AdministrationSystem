@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.use(protect); 
 
-// GET: Solo Admin y Manager pueden VER la lista
+// GET: Only admin and manager can access the list of users
 router.get('/', authorizeRoles('admin', 'manager'), getUsers);
 
 router.post('/', authorizeRoles('admin', 'manager'), createUser);
