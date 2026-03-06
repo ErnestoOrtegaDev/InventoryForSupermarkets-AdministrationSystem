@@ -1,10 +1,11 @@
+/* src/components/layout/NotificationBell.tsx */
+
 import { useState, useEffect, useRef } from 'react';
 import { useNotificationStore } from '../../store/notificationStore';
 import { useSupermarketStore } from '../../store/supermarketStore';
-// Cambiamos la importación para asegurar que coincida con la versión 24/outline
 import { BellIcon, TrashIcon, CheckIcon } from '@heroicons/react/24/outline';
 
-export const NotificationBell = () => { // Agregamos 'export' aquí
+export const NotificationBell = () => { 
     const activeSupermarketId = useSupermarketStore((state) => state.activeSupermarketId);
     
     const notifications = useNotificationStore((state) => state.notifications);
@@ -16,7 +17,7 @@ export const NotificationBell = () => { // Agregamos 'export' aquí
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    // Cerrar al hacer clic fuera
+    // Close whent it clicks outside
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -27,7 +28,7 @@ export const NotificationBell = () => { // Agregamos 'export' aquí
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    // Se agregó fetchNotifications al array de dependencias para corregir el error de linting
+    // It added fetchNotifications to array of dependencies for fix error by linting
     useEffect(() => {
         if (activeSupermarketId) {
             fetchNotifications(activeSupermarketId);
@@ -36,7 +37,7 @@ export const NotificationBell = () => { // Agregamos 'export' aquí
 
     return (
         <div className="relative" ref={dropdownRef}>
-            {/* Botón de la Campana */}
+            {/* Bell Button */}
             <button 
                 onClick={() => setIsOpen(!isOpen)}
                 className="relative p-2 text-gray-400 hover:text-gray-600 focus:outline-none transition-colors"

@@ -3,7 +3,7 @@
 import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, Package, Store, Users, LogOut, X, Clock } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
-import clsx from 'clsx'; // Utilidad para clases condicionales
+import clsx from 'clsx'; 
 import Swal from 'sweetalert2';
 
 interface SidebarProps {
@@ -11,11 +11,11 @@ interface SidebarProps {
     setIsOpen: (isOpen: boolean) => void;
 }
 
-// Recibimos isOpen y setIsOpen, y le decimos que use la interfaz SidebarProps
+// We receive isOpen and setIsOpen, and tell it to use the SidebarProps interface.
 export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
     const { user, logout } = useAuthStore();
 
-    // Definimos los enlaces. Podríamos ocultar algunos según el rol del usuario.
+    // We define the links. We could hide some depending on the user's role.
     const navItems = [
         { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
         
@@ -53,29 +53,25 @@ export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 
     return (
         <>
-            {/* OVERLAY (Fondo oscuro en móvil al abrir el menú) */}
             {isOpen && (
                 <div 
                     className="fixed inset-0 bg-black/50 z-40 lg:hidden backdrop-blur-sm transition-opacity"
-                    onClick={() => setIsOpen(false)} // Cierra el menú al tocar el fondo
+                    onClick={() => setIsOpen(false)} // Close menu if it clicks outside
                 />
             )}
 
             {/* SIDEBAR */}
             <aside className={clsx(
                 "w-64 bg-slate-900 text-white flex flex-col h-screen fixed left-0 top-0 border-r border-slate-800 z-50 transition-transform duration-300 ease-in-out",
-                // Magia responsiva: En PC (lg) siempre está en 0. En móvil, se esconde o muestra según 'isOpen'
                 isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0" 
             )}>
                 
-                {/* Encabezado del Sidebar */}
+                {/* Sidebar Header */}
                 <div className="h-16 flex items-center justify-between px-6 border-b border-slate-800">
                     <div className="flex items-center">
-                        {/* Cambiado de blue-500 a rose-500 para el icono del logo */}
                         <Store className="text-rose-500 mr-2" size={24} />
                         <span className="font-bold text-lg tracking-wide">StockMaster</span>
                     </div>
-                    {/* Botón de cerrar (Solo visible en móviles) */}
                     <button 
                         onClick={() => setIsOpen(false)}
                         className="lg:hidden p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
@@ -84,16 +80,15 @@ export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                     </button>
                 </div>
 
-                {/* Menú de Navegación */}
+                {/* Navbar */}
                 <nav className="flex-1 py-6 space-y-1 px-3 overflow-y-auto">
                     {navItems.map((item) => (
                         <NavLink
                             key={item.to}
                             to={item.to}
-                            onClick={() => setIsOpen(false)} // Cierra el menú al hacer clic en un link (UX Móvil)
+                            onClick={() => setIsOpen(false)} 
                             className={({ isActive }) => clsx(
                                 'flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-sm font-medium',
-                                // Cambiado de bg-blue-600 a bg-rose-800 (Guinda) para la pestaña activa
                                 isActive 
                                     ? 'bg-rose-800 text-white shadow-md' 
                                     : 'text-slate-400 hover:bg-slate-800 hover:text-white'
