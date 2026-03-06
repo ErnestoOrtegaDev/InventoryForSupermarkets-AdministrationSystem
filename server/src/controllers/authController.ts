@@ -185,9 +185,21 @@ export const forgotPassword = async (req: Request, res: Response): Promise<void>
         user.resetPasswordExpire = new Date(Date.now() + 15 * 60 * 1000);
         await user.save();
 
-        const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
+        // Se usa trim() por precaución en caso de que la variable de entorno tenga espacios
+        const baseUrl = process.env.FRONTEND_URL ? process.env.FRONTEND_URL.trim() : 'http://localhost:5173';
+        const resetUrl = `${baseUrl}/reset-password/${resetToken}`;
 
-        const message = `<h2>Recuperación de Contraseña</h2><a href="${resetUrl}">Restablecer</a>`;
+        // El formato original con estilo CSS integrado
+        const message = `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaea; border-radius: 10px;">
+                <h2 style="color: #333; text-align: center;">Recuperación de Contraseña - StockMaster</h2>
+                <p style="color: #555; font-size: 16px;">Has solicitado restablecer tu contraseña. Haz clic en el siguiente enlace para crear una nueva:</p>
+                <div style="text-align: center; margin: 30px 0;">
+                    <a href="${resetUrl}" style="background-color: #e11d48; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Restablecer Contraseña</a>
+                </div>
+                <p style="margin-top: 20px; font-size: 12px; color: #999; text-align: center;">Si no solicitaste este cambio, ignora este correo. El enlace caducará en 15 minutos.</p>
+            </div>
+        `;
 
         await sendEmail({
             email: user.email,
