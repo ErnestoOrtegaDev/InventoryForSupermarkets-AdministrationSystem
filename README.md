@@ -74,6 +74,8 @@ This repository contains both the client and server code, separated into their r
 
 ```
 
+---
+
 ## ⚙️ Project Installation
 
 To run this project in a development environment, you will need to run both environments separately. Please refer to the specific documentation for each module to see the required environment variables:
