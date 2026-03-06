@@ -2,22 +2,25 @@ import Movement from '../models/Movement';
 import { Types } from 'mongoose';
 
 /**
- * Registra automáticamente un movimiento en el Kardex si detecta cambios en el stock.
+ * Register a stock movement in the Kardex (Movement collection) whenever there's a change in product stock.
+ * This function should be called inside the product update logic, after determining the previous and new stock levels.
+ * It automatically determines if the movement is an "IN" (restock) or "OUT" (sale/adjustment) based on the stock difference.
+ * You can also provide a custom description for more context in the movement record.
  */
 export const recordKardexMovement = async (
     productId: Types.ObjectId | string,
     supermarketId: Types.ObjectId | string,
     previousStock: number,
     newStock: number,
-    customDescription?: string // Opcional: Para darle más contexto
+    customDescription?: string // Optional: If you want to provide a specific description instead of the default ones based on movement type
 ) => {
     try {
         const stockDifference = newStock - previousStock;
 
-        // Si el stock no cambió (ej. solo editaron el nombre del producto), ignoramos
+        // If the stock hasn't changed, we don't need to record anything
         if (stockDifference === 0) return;
 
-        // Determinamos automáticamente si fue entrada o salida
+        // Determinate movement type and default description based on stock difference
         let type = 'ADJUST';
         let defaultDescription = '';
 
@@ -29,12 +32,12 @@ export const recordKardexMovement = async (
             defaultDescription = 'Salida/Venta de mercancía';
         }
 
-        // Guardamos en la base de datos
+        // Save the movement record in the database
         await Movement.create({
             product: productId,
             supermarket: supermarketId,
             type,
-            quantity: Math.abs(stockDifference), // Siempre positivo
+            quantity: Math.abs(stockDifference), // Always positive quantity for clarity in the movement record
             previousStock,
             newStock,
             description: customDescription || defaultDescription
