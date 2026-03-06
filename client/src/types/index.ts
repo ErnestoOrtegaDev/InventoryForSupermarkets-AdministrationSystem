@@ -1,30 +1,30 @@
 // src/types/index.ts
 
-// USUARIO (Basado en UserSchema)
+// USER (Based on UserSchema)
 export interface User {
     _id: string;
-    firstName: string;       // Antes teníamos 'name', ahora son dos campos
+    firstName: string;       // Replaced 'name' with separate first and last name fields
     lastName: string;
     email: string;
-    role: 'admin' | 'worker' | 'provider' | 'manager'; // Roles exactos del Backend
+    role: 'admin' | 'worker' | 'provider' | 'manager'; // Exact roles defined in the Backend
     supermarket?: string | { _id: string; name: string };
     status: boolean;         
     googleId?: string;
     image?: string;          
 }
 
-// SUPERMERCADO (Basado en SupermarketSchema)
+// SUPERMARKET (Based on SupermarketSchema)
 export interface Supermarket {
     _id: string;
     name: string;
     address: string;
-    phone?: string;          // En el modelo SÍ existe (opcional)
-    image?: string;          // En el modelo SÍ existe (default: 'default-store.jpg')
+    phone?: string;          // Optional field as defined in the model
+    image?: string;          // Optional field (default: 'default-store.jpg')
     active: boolean;
-    createdBy?: string;      // ID del usuario que lo creó
+    createdBy?: string;      // ID of the user who created the record
 }
 
-// PRODUCTO (Basado en ProductSchema)
+// PRODUCT (Based on ProductSchema)
 export interface Product {
     _id: string;
     name: string;
@@ -35,25 +35,25 @@ export interface Product {
     minStock: number;
     image?: string;          
     category?: string;       
-    supermarket: string;     // ID del Supermercado
+    supermarket: string;     // Reference to the Supermarket ID
     active: boolean;
     
     alert?: boolean;         
     alertMessage?: string;
 }
 
-// NOTIFICACIÓN (Basado en NotificationSchema)
+// NOTIFICATION (Based on NotificationSchema)
 export interface Notification {
     _id: string;
     type: 'STOCK_ALERT' | 'SYSTEM_MSG';
     message: string;
     supermarket: string;
-    product?: Product | string; // Puede venir el objeto poblado o solo el ID
+    product?: Product | string; // Can be a populated object or just the ID string
     read: boolean;
-    createdAt: string;       // Las fechas viajan como string en JSON
+    createdAt: string;       // ISO Date strings as they travel via JSON
 }
 
-// RESPUESTA LOGIN
+// LOGIN RESPONSE
 export interface LoginResponse {
     message: string;
     user: User;
