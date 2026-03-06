@@ -21,12 +21,20 @@ const PORT = process.env.PORT || 4000;
 //DB Connection
 connectDB();
 
-const allowedOrigins = [process.env.FRONTEND_URL || 'http://localhost:5173'];
+const frontendUrls = process.env.FRONTEND_URL || '';
 
-// Middlewares
+const allowedOrigins = frontendUrls.split(',');
+
 app.use(cors({
-    origin: allowedOrigins,
-    credentials: true              
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('Origin blocked by CORS:', origin); 
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
 app.use(express.json()); 
 app.use(cookieParser());
