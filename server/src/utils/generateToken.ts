@@ -16,16 +16,16 @@ const generateTokens = (res: Response, userId: Types.ObjectId) => {
   // Cookie from Access Token
     res.cookie('jwt', accessToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV !== 'development',
-        sameSite: 'strict',
+        secure: true,
+        sameSite: 'none',
         maxAge: 15 * 60 * 1000, // 15 minutes
     });
 
   // Cookie from Refresh Token
     res.cookie('jwt-refresh', refreshToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV !== 'development',
-        sameSite: 'strict',
+        secure: true,
+        sameSite: 'none',
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         path: '/' 
     });
